@@ -3,11 +3,11 @@
 require_once './templates/partial/_header.php';
 ?>
 <h3>Affichage des services</h3>
-<div class="view_service">
+<div class="view_services">
 <?php foreach($service as $services) { ?>
     
     <div>
-    <b><?=$services->getName();?></b>
+    <b class="irish-grover-regular" style="font-size:1.5em; color:brown;"><?=$services->getName();?></b>
     <p><?=$services->getDescription();?></p> 
 
     </div>

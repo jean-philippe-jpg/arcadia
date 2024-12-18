@@ -72,9 +72,9 @@ body {
    
   }
 
-  .view_service {
+  .view_services {
 
-    display: flex;
+    
     justify-content: space-around;
     text-align: center;
     margin-top: 5vh;
@@ -166,7 +166,9 @@ body {
 
  
   @media (min-width: 360px) and (max-width: 810px) {
+    
 
+     
     .text-animals {
 
         margin-left: 20vw;
@@ -209,8 +211,7 @@ body {
 
         height: 20vh;
     }
-
-
+   
     .img_animals {
 
 
@@ -274,4 +275,6 @@ body {
         border-radius: 50%;
         background: lightgreen;
     } 
+
+   
 }

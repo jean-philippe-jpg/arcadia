@@ -121,7 +121,7 @@ class HabitatsRepository {
                 }
             }
         } catch (\Exception $e) {
-            echo 'Erreur : ' . $e->getMessage();
+            echo 'Erreur d\'uploads : ' . $e->getMessage();
         }
 
     }

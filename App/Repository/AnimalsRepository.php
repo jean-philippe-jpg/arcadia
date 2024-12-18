@@ -76,7 +76,7 @@ use App\Tools\StringTools;
                     $mysql = Mysql::getInstance();
                     $pdo = $mysql->getPDO();
             
-                $stmt = $pdo->prepare('INSERT INTO animals (first_name, race, habitat_id ) VALUES (:first_name, :race, :habitat_id ))');
+                $stmt = $pdo->prepare('INSERT INTO animals (first_name, race, habitat_id ) VALUES (:first_name, :race, :habitat_id )');
                 $stmt->bindParam(':first_name', $sanitized_name , $pdo::PARAM_STR);
                 $stmt->bindParam(':race',  $sanitized_race , $pdo::PARAM_INT);
                 $stmt->bindParam(':habitat_id',  $sanitized_habitat , $pdo::PARAM_INT);
@@ -96,11 +96,11 @@ use App\Tools\StringTools;
                     
              
                 if(!$stmt->execute()){
-                    echo 'erreur d\'insertion';
+                    echo 'animal non crée';
                 } 
             }
             } catch(\Exception $e){
-                echo 'erreur d\'insertion'. $e->getMessage();
+                echo 'erreur de création'. $e->getMessage();
             }
     }
 

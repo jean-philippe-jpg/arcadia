@@ -10,12 +10,12 @@ require_once _ROOTPATH_.'\templates\partial\_header.php';
 <a href="?controller=habitats&action=read" class="btn btn-success">retour</a>
 <div class="show">
 
-<p><strong>habitat:  </strong><?= $logement->getName();?></p>
-<p><strong>description:  </strong><?= $logement->getDescription();?></p>
+<p  style=" font-size:2em; color:brown;" class="irish-grover-regular"><?=  $logement->getName();?></p>
+<p style="font-size: 1.3em;"><?= $logement->getDescription();?></p>
 
 
 <?php foreach($animals as $animal) { ?>
-<a href="?controller=habitats&action=show&detailAnimal=<?= $animal->getId(); ?>"><?= $animal->getFirstName();?></a>
+<a class="irish-grover-regular animals-habitat" href="?controller=habitats&action=show&detailAnimal=<?= $animal->getId(); ?>"><strong><?= $animal->getFirstName();?></strong></a>
 <?php } ?>
 </div>  
      

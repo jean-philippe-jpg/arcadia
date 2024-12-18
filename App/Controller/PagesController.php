@@ -3,12 +3,13 @@
   namespace App\Controller;
 
 use App\Entity\Habitats;
-use App\Repository\UsersRepository;
-    use App\Repository\CommentsRepository;
-use App\Repository\HabitatsRepository;
-use App\Repository\ServicesRepository;
-use App\Repository\AnimalsRepository;
 use App\Repository\PagesRepository;
+    use App\Repository\CommentsRepository;
+use App\Repository\UsersRepository;
+use App\Repository\AnimalsRepository;
+use App\Repository\HabitatsRepository;
+use App\Repository\HorairesRepository;
+use App\Repository\ServicesRepository;
 
 class PagesController extends Controller{
 
@@ -93,12 +94,16 @@ class PagesController extends Controller{
                     $animals = new AnimalsRepository();
                     $animal =  $animals->read();
 
+                    $horaires = new HorairesRepository();
+                    $horaires =  $horaires->read();
+
                     $this->render('home', [
                             'avis' => $cmt,
                             'habitat' => $environement,
                             'service' => $prestation,
                             'animal' => $animal,
-                            'images' => $images
+                            'images' => $images,
+                            'horaires' => $horaires
                             
                     ] );
                     //require_once 'templates/showanimals.php';//

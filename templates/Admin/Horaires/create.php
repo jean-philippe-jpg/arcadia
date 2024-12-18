@@ -10,16 +10,16 @@ require_once _ROOTPATH_.'/templates/Admin/Partial/_header.php';
 
    
     <div class="create">
-    <label for="jours"><strong>jours: </strong></label>
+    <label for="jours"><strong>date: </strong></label>
     <input name="date" id="jours" type="text">
     </div>
     <div class="create">
     <label for="horaire"><strong>ouvre à : </strong></label>
-    <input name="horaires" id="name" type="time">
+    <input name="ouverture" id="name" type="time">
     </div>
     <div class="create">
     <label for="close"><strong>ferme à: </strong></label>
-    <input name="close" id="close" type="time">
+    <input name="fermeture" id="close" type="time">
     </div>
     
     <input type="submit" name="insert" value="create">

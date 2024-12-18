@@ -112,6 +112,7 @@ class AnimalsController extends Controller{
 
 
                         if(!isset($_GET['photo'])) {
+
                       $animalsRrepository = new AnimalsRepository();
                       $animalsRrepository->createAnimals();
 
@@ -121,15 +122,16 @@ class AnimalsController extends Controller{
                       $this->render('/Admin/Animals/create', [
                               
                                     
-                          ] );
+                          ] ); 
 
-                      } else {
+                      } elseif(isset($_GET['photo'])) {
                             
   
                         $animalsRrepository = new AnimalsRepository();
-                        $animalsRrepository->images();
+                            $animalsRrepository->images();
 
                             $id = $_GET['id'];
+                           
                         $animalsRrepository = new AnimalsRepository();
                         $animals = $animalsRrepository->findOneById($id);
   
@@ -150,10 +152,6 @@ class AnimalsController extends Controller{
 
                       }
                   
-                      // charger l'id d'un element avec le repository//
-
-                      
-                          //require_once 'templates/showanimals.php';//    
                  
               }
 

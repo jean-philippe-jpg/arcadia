@@ -10,8 +10,8 @@ class Horaires
 
 protected int $id ;
 protected string $date ;
-protected string $horaires ;
-protected string $close ;
+protected string $horaires = 'FERMER' ;
+protected string $close = 'FERMER' ;
 
 
 public function getId(): int
@@ -27,11 +27,12 @@ public function setId(int $id)
 
 public function getHoraires()
 {
+
 return $this->horaires;
 }
 
 
-public function setHoraires($horaires)
+public function setHoraires($horaires )
 {
 $this->horaires = $horaires;
 
@@ -39,8 +40,8 @@ return $this;
 }
 
 public function getDate()
-{
-return $this->date;
+{    $date = strtoupper($this->date);
+    return $date;
 }
 
 

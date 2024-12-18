@@ -2,11 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Horaires;
 use App\Repository\HorairesRepository;
-
-
-
 class HorairesController extends Controller{
 
   public function route(): void {
@@ -28,16 +24,19 @@ class HorairesController extends Controller{
                   break;
               case 'read':
                   $this->read();
-                 
+                  break;
+                  case 'update':
+                    $this->update();
+                   
                   break;
                   case 'delete':
                      $this->delete();
 
                   break;
-                  case 'update':
+                  /*case 'modify':
                       $this->update();
                      
-                  break;
+                  break;*/
                   case 'delete':
                       var_dump('chargement de pagescontroller');
                      
@@ -119,11 +118,6 @@ class HorairesController extends Controller{
 
 
                       }
-                  
-                      // charger l'id d'un element avec le repository//
-
-                      
-                          //require_once 'templates/showanimals.php';//    
                  
               }
 
@@ -133,7 +127,7 @@ class HorairesController extends Controller{
                       try {       
                           
                               $habitatRrepository = new HorairesRepository();
-                             $read = $habitatRrepository->read();
+                              $read = $habitatRrepository->read();
                               
                               $this->render('/Admin/Horaires/read', [
                                   
@@ -159,15 +153,15 @@ class HorairesController extends Controller{
               {
                       try {       
 
-                          if(isset($_GET['suprimer'])){
-                              $id = $_GET['suprimer'];
+                          if(isset($_GET['id'])){
+                              $id = $_GET['id'];
                               $habitatRrepository = new HorairesRepository();
-                              $read = $habitatRrepository->delete($id);
+                               $habitatRrepository->delete($id);
                           }
                           
                               $this->render('/Admin/Horaires/read', [
 
-                                  'read' => $read
+                                
                                   
                                    ] );
        
@@ -192,17 +186,16 @@ class HorairesController extends Controller{
 
                           if(isset($_GET['modify'])){
                               $id = $_GET['modify'];
-                              $habitatRrepository = new HorairesRepository();
-                              $read = $habitatRrepository->updateRace($id);
+                              $horairesRrepository = new HorairesRepository();
+                               $horairesRrepository->update($id);
 
-                              $this->render('/Admin/Race/read', [
+                              $this->render('/Admin/Horaires/read', [
 
-                                  //'read' => $read
                         
-                         ] );
+                             ] );
                              
                               } else {
-                                  throw new \Exception('modification impossible :/');
+                                  throw new \Exception('modification impossible ');
   
                               }
                           

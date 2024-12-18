@@ -1,0 +1,26 @@
+
+@media (min-width:810px) {
+.horaires{
+
+  display: flex;
+  list-style-type: none;
+    color: azure;
+}
+
+}
+
+@media (min-width:360px) and (max-width:809px) {
+    .horaires{
+    
+      display: block;
+      list-style-type: none;
+        color: azure;
+    }
+    
+    }
+
+.horaires li{
+    
+    margin-left: 5px;
+ 
+ }

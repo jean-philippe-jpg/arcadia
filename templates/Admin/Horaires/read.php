@@ -1,12 +1,13 @@
 <?php
 require_once _ROOTPATH_.'/templates/Admin/Partial/_header.php';
 ?>
-<h1>Races</h1>
 
-<?php if(!isset($_GET['modify'])) {  ?>
+<h1>Horaires</h1>
+
+<?php if(!isset($_GET['modify']) ) {  ?>
 
 <table class="table">
-<a href="?controller=race&action=create" class="btn ">ajouter</a>
+<a href="?controller=horaires&action=create" class="btn ">ajouter</a>
 <?php
 require_once _ROOTPATH_.'/templates/Admin/Partial/_btnadmin.php';
 ?>
@@ -34,20 +35,26 @@ require_once _ROOTPATH_.'/templates/Admin/Partial/_btnadmin.php';
           <td><?= $reads->getHoraires();?></td>
           <td><?= $reads->getClose();?></td>
           
-          <td><a href="?controller=race&action=update&modify=<?= $reads->getId(); ?>" class="btn ">update</a></td>
+          <td><a href="?controller=horaires&action=update&modify=<?= $reads->getId(); ?>" class="btn ">update</a></td>
           
-          <td><a href="?controller=horaires&action=delete&suprimer=<?= $reads->getId(); ?>" class="btn ">delete</a></td>
+          <td><a href="?controller=horaires&action=delete&id=<?= $reads->getId(); ?>" class="btn ">delete</a></td>
       </tr>
         <?php } ?>
         <a href="index.php" class="btn btn-danger">home</a>
         <?php } else { ?>
 
+
+            <h4>hello gégé</h4>
         <form action="" method="post">
             
-            <input type="text" name="name"  />
+            <label for="ouverture">ouverture</label>
+            <input type="time" name="ouverture" id="ouverture"  />
+            <label for="fermeture">ouverture</label>
+            <input type="time" name="fermeture" id="fermeture" />
             
-            <input type="submit" class="btn btn-success"  />
-            <a href="?controller=Race&action=read<?= $reads['id']; ?>" class="btn btn-danger">annuler</a>
+            <input type="submit" class="btn "  />
+
+            <a href="?controller=horaires&action=read" class="btn ">annuler</a>
         </form>
         
         <?php } ?>

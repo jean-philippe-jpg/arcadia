@@ -1,20 +1,4 @@
 <?php
-$name = 'root';
-$pass = '#J25061984c#';
-$host = 'localhost';
-$dbname = 'arcadia';
-
-try {
-
-    $bdd = new PDO("mysql:host=$host;dbname=$dbname", $name, $pass);
-
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-} catch (PDOException $e) {
-    echo 'Connexion échouée : ' . $e->getMessage();
-}
-
 class AbusPrivilegeExcessif
 {
     public static function main()
@@ -52,8 +36,11 @@ class AbusPrivilegeExcessif
         {
             return false;
         }
-        AbusPrivilegeExcessif::main();
+        
     }
 }
 
 // Appel de la méthode main pour démarrer le programme
+
+
+?>

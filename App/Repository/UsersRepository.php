@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use Exception;
 use App\Bdd\Mysql;
+use App\Bdd\AbusPrivilegeExcessif;
 use App\Entity\Roles;
 use App\Entity\Users;
 use App\Tools\StringTools;
@@ -213,6 +214,8 @@ public function profil( ){
                  
                 $mysql = Mysql::getInstance();
                 $pdo = $mysql->getPDO();
+
+              
                 session_start();
                 $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
               
@@ -252,8 +255,8 @@ public function profil( ){
                       
                                 if($rolesStatement->execute()){
 
-                            //$rolesStatement->fetchObject( Users::class );
-                            //var_dump( $user->getRoles()); echo '<br><br>'; 
+                                    
+
                             while($roles =  $rolesStatement->fetch($pdo::FETCH_ASSOC) ){
                            
                                 $user->addRoles($roles['name']);
@@ -264,12 +267,7 @@ public function profil( ){
                         //var_dump($user->getRoles()); echo '<br><br>';
 
                           $_SESSION['roles'] = $user->getRoles();
-                            //var_dump($rls); echo '<br><br>';
-                        /*if(in_array('ROLE_ADMIN', $rls)){
-                            echo 'vous etes connecté en tant qu\'administrateur';
-                        } else {
-                            echo 'vous etes connecté en tant qu\'utilisateur';
-                        }*/
+                          
                        
                 } else {
 

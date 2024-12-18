@@ -1,14 +1,5 @@
 <?php
 
-//if (empty($_SESSION['email'])) {
-
-
-
-//} else {
-	//$email = $_SESSION['email'] = $_POST['email'];
-//}
-
- //$password = $_SESSION['password'] = $_POST['password'];
 
 require_once _ROOTPATH_.'/templates/Admin/Partial/_header.php';
 

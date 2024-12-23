@@ -39,20 +39,7 @@ class UsersRepository {
         }
        
 
-        //$habitatEntity = new Habitats();//
         
-        //foreach($habitat as $key => $value){
-
-           // $habitatEntity->{'set'.StringTools::toPascaleCase($key) } ($value);
-            /*if(method_exists($habitatEntity, $method)){
-                $habitatEntity->$method($value);*/
-            //}
-
-            //$habitatEntity->{'set' .StringTools::toPascaleCase($key)}($value);
-
-        //return $habitat;
-        
-    //}*/
 }
 
     
@@ -62,10 +49,11 @@ class UsersRepository {
                 try{
                 $mysql = Mysql::getInstance();
                 $pdo = $mysql->getPDO();
-
+                $email = $_POST['email'];
                 
                 $statement = $pdo->prepare('INSERT INTO users(email, password) VALUES (:email, :password)');
-
+                $encryption_key="Toto-Key123";
+                $encrypted_text = openssl_encrypt($email, 'aes-256-cbc', $encryption_key);
             $statement->bindParam(':email',  $encrypted_text, $pdo::PARAM_STR);
 
             if(!isset($_POST['email'])) {
@@ -74,10 +62,9 @@ class UsersRepository {
             } else {
 
             
-            $email = $_POST['email'];
-            $sanitized_email = htmlspecialchars($email, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-            $encryption_key="  ";
-                $encrypted_text = openssl_encrypt($sanitized_email, 'aes-256-cbc', $encryption_key);
+            
+            //$sanitized_email = htmlspecialchars($email, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+           
                 //$decrypted_text = openssl_decrypt($encrypted_text, 'aes-256-cbc', $encryption_key);
                     
             $password = $_POST['password'];
@@ -87,7 +74,8 @@ class UsersRepository {
             $statement->bindParam(':password', password_hash( $sanitized_password, PASSWORD_BCRYPT));
 
             if ($statement->execute()) {
-                echo 'Utilisateur créé';
+                
+                var_dump( $email);
                 var_dump($encrypted_text);
                 echo 'L\'utilisateur a bien été créé';
 
@@ -232,16 +220,17 @@ public function profil( ){
                 $email = $_POST['email'];
                 $sanitized_email = htmlspecialchars($email, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
-                $encryption_key="MGnSluWRG5cyut7T3CN42Q  ";
-                $encrypted_text = openssl_encrypt($sanitized_email, 'aes-256-cbc', $encryption_key);
-                $decrypted_text = openssl_decrypt($encrypted_text, 'aes-256-cbc', $encryption_key);
-                    
-                $statement->bindValue(':email',$decrypted_text, $pdo::PARAM_STR);
+                $encryption_key="Toto-Key12";
+                $encrypted_text = openssl_encrypt($email, 'aes-256-cbc', $encryption_key);
+                $decrypted_text = openssl_decrypt(  $encrypted_text, 'aes-256-cbc', $encryption_key);
+                $statement->bindValue(':email', $decrypted_text, $pdo::PARAM_STR);
                 $statement->execute();
-                var_dump($decrypted_text);
+                
+                var_dump( $decrypted_text);
+                var_dump( $sanitized_email);
+                
                 $user = $statement->fetchObject( Users::class);
-                //var_dump($user);
-                //var_dump($user); echo '<br><br>';
+                
                if ($user === false) {
                         
                 // Si aucun utilisateur ne correspond au login entré, on affiche une erreur
@@ -309,11 +298,8 @@ public function profil( ){
                     //INNER JOIN roles_users r ON r. = u.id');
                     
                     $statement = $pdo->prepare("SELECT u.id as id, u.email as email, group_concat(r.name, '<br>') as rolesname FROM roles_users 
-                    INNER JOIN roles r ON role_id = r.id JOIN users u ON user_id = u.id group by u.id");    
-                    /*$statement = $pdo->prepare('SELECT u.id,u.username, u.email FROM users u
-                    ');*/
-                    // On récupère un utilisateur ayant le même login (ici, e-mail)
-                  
+                  INNER JOIN roles r ON role_id = r.id JOIN users u ON user_id = u.id group by u.id");    
+                   
                         if ( $statement->execute()) {
 
                            

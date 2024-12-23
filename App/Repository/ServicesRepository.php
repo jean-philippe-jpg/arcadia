@@ -6,6 +6,7 @@ use App\Entity\Service;
 use App\Bdd\Mysql;
 use App\Entity\Services;
 use App\Tools\StringTools;
+use MongoDB\Client;
 
 
 class ServicesRepository {
@@ -57,6 +58,7 @@ class ServicesRepository {
                 $pdo = $mysql->getPDO();
                 $stmt = $pdo->prepare("SELECT * FROM services ");
                 
+                $client = new Client("mongodb://localhost:27017");
                 if($stmt->execute()){
                     
                     $stmt->setFetchMode($pdo::FETCH_CLASS, Services::class);

@@ -5,6 +5,7 @@ class Users
     private int $id;
     private string $email;
     private string $password;
+    private string $rolesname;
     // Tableau de rôles
     private array $roles = [];
 
@@ -37,4 +38,18 @@ class Users
 
 
   
+
+     
+    public function getRolesname()
+    {
+        return $this->rolesname;
+    }
+
+    
+    public function setRolesname($rolesname)
+    {
+        $this->rolesname = $rolesname;
+
+        return $this;
+    }
 }

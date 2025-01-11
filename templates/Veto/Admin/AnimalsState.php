@@ -20,10 +20,10 @@ if(isset($_GET['filtres']) && !isset($_GET['vue'])){
 
 <a href="?controller=veto&action=read" class="btn btn-success">retour</a>
 
-   <?php foreach($vue as $vues) { ?>
 
+   <?php foreach($vue as $vues) { ?>
     <div class="show">
-    <h4 style="color: red;"> <?= $vues->getFirst_name();?> </h4>
+    <h4 style="color: red;"> <?= $vues->getName_animals();?> </h4>
     <p> <?= $vues->getNourriture();?> </p>
     <p> <?= $vues->getQuantitee();?> </p>
     <p> <?= $vues->getState();?> </p>

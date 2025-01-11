@@ -5,7 +5,7 @@
 <ul>
 
 <?php foreach($animal as $animals){?>
-<li><a href="?controller=admin&action=readadmin&vue=<?= $animals->getId(); ?>"><?= $animals->getDate();?></a></li>
+<li><a href="?controller=admin&action=readadmin&vue=<?= $animals->getId_animals(); ?>"><?= $animals->getDate();?></a></li>
 <?php } ?>
 
    

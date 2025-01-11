@@ -1,8 +1,10 @@
 <?php
 
 
-  namespace App\Controller;
 
+
+  namespace App\Controller;
+  use App\Repository\VetoRepository;
   use App\Repository\HabitatsRepository;
   use App\Entity\Habitats;
   use App\Repository\AnimalsRepository;
@@ -21,7 +23,7 @@ class HabitatsController extends Controller{
                 case 'show':
 
                     $this->show();
-                    //$this->showMore();
+                    
                     
                     break;
                 case 'create':
@@ -82,9 +84,6 @@ class HabitatsController extends Controller{
                             $habitation = $habitatRrepository->findOneById($id);
                             $animals = $habitatRrepository->findOneByAnimals($id);
 
-                           
-                            
-                           
                             $this->render('showanimals', [
 
                                 'logement' => $habitation,
@@ -96,6 +95,8 @@ class HabitatsController extends Controller{
                             } elseif(isset($_GET['detailAnimal'])) {  
                                 $id = $_GET['detailAnimal'];
                             // afficher le detail de l'element//
+                            /*$habitatRrepository = new VetoRepository();
+                                    $animals = $habitatRrepository->findOneById($id);*/
                             $habitatRrepository = new AnimalsRepository();
                             $animals = $habitatRrepository->findOneById($id);
                             $this->render('showanimals', [

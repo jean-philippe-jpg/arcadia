@@ -125,14 +125,10 @@ class AnimalsController extends Controller{
                           ] ); 
 
                       } elseif(isset($_GET['photo'])) {
-                            
+                        $id = $_GET['id'];
   
                         $animalsRrepository = new AnimalsRepository();
                             $animalsRrepository->images();
-
-                            $id = $_GET['id'];
-                           
-                        $animalsRrepository = new AnimalsRepository();
                         $animals = $animalsRrepository->findOneById($id);
   
                         $this->render('/Admin/Animals/create', [

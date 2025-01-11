@@ -1,6 +1,7 @@
 <?php
 
 require_once _ROOTPATH_.'\templates\partial\_header.php';
+
 ?>
 
 <h1>show animals hab</h1>
@@ -15,29 +16,23 @@ require_once _ROOTPATH_.'\templates\partial\_header.php';
 
 
 <?php foreach($animals as $animal) { ?>
-<a class="irish-grover-regular animals-habitat" href="?controller=habitats&action=show&detailAnimal=<?= $animal->getId(); ?>"><strong><?= $animal->getFirstName();?></strong></a>
+<a class="irish-grover-regular animals-habitat" href="?controller=habitats&action=show&detailAnimal=<?= $animal->getId_animals(); ?>"><strong><?= $animal->getName_animals();?></strong></a>
 <?php } ?>
 </div>  
-     
-
 <?php } 
- elseif(isset($_GET['detailAnimal'])) { ?>
 
+ elseif(isset($_GET['detailAnimal']) && !isset($_GET['id'])) { ?>
 
 <div class="show">
-    
-
-
-      <img src="/templates/uploads/<?= $logement->getImg()?>" alt="img" >
-        <?php  var_dump($logement->getImg())?>
-    <p><strong>Prenom:  </strong><?= $logement->getFirstName(); ?></p>
-<p><strong>Race:  </strong><?= $logement->getNameRace(); ?></p>
+  
+  <p><strong>Prenom:  </strong><?= $logement->getName_animals(); ?></p>
+<p><strong>Race:  </strong><?= $logement->getRace(); ?></p>
 <p><strong>etat:  </strong><?= $logement->getState(); ?></p>
 <p><strong>detail:  </strong><?= $logement->getDetail(); ?></p>
-
+</div>
 <?php } ?>
 
-</div>
+
 
 <?php
 

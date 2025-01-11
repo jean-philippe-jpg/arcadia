@@ -14,7 +14,7 @@ class RaceRepository {
         $mysql = Mysql::getInstance();
         $pdo = $mysql->getPDO();
 
-        $query = $pdo->prepare('SELECT h.id as id, h.name as name, h.description as description, a.first_name as first_name FROM habitat h
+        $query = $pdo->prepare('SELECT h.id as id_hab, h.name as name, h.description as description, a.first_name as name_animals FROM habitat h
                 INNER JOIN animals a ON h.animals_list = a.id where h.id = :id');   
         $query->bindParam(':id', $id, $pdo::PARAM_INT);
        

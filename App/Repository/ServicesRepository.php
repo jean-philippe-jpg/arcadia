@@ -58,7 +58,7 @@ class ServicesRepository {
                 $pdo = $mysql->getPDO();
                 $stmt = $pdo->prepare("SELECT * FROM services ");
                 
-                $client = new Client("mongodb://localhost:27017");
+               // $client = new Client("mongodb://localhost:27017");
                 if($stmt->execute()){
                     
                     $stmt->setFetchMode($pdo::FETCH_CLASS, Services::class);

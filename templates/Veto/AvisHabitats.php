@@ -5,10 +5,10 @@ require_once _ROOTPATH_.'/templates/Admin/Partial/_header.php';
 <h1>show avis habitat</h1>
 
 
-<?php if(!isset($_GET['create'])) { 
+<?php if(!isset($_GET['create']) && !isset($_GET['avis'])) { 
  require_once _ROOTPATH_.'/templates/Admin/Partial/_dropdownHabitats.php';
 
-  } else  { ?>
+  } elseif (!isset($_GET['avis']))  { ?>
         <h3>create avis home</h3>
 
        
@@ -29,6 +29,24 @@ require_once _ROOTPATH_.'/templates/Admin/Partial/_header.php';
         <button type="submit">envoyer</button>
  <?php } ?>
 
+    <?php if(isset($_GET['avis'])) { ?>
+ <h1>vue des avis</h1>
+    
+
+ <?php foreach($avishabitat as $avis) { ?>
+
+  <div class="avis">
+  
+          <td><?= $avis->getAvis_id();?></td>
+          <td><?= $avis->getAvis_hab();?></td>
+          <td><?= $avis->getEtat();?></td>
+          <td><?= $avis->getName();?></td>
+    
+  </div>
+
+  <?php } ?>
+
+<?php } ?>
 <?php
 require_once _ROOTPATH_.'/templates/Admin/Partial/_footer.php';
 ?>

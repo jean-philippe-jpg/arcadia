@@ -1,18 +1,16 @@
 <?php
 
 namespace App\Entity;
-class Animals
+class Animals extends AbstractClass
 {
 
-protected int $id ;
-protected string $first_name ;
+
 protected string $animal ;
-protected string $namerace ;
-protected string $home ;
-protected string $state = 'null';
+protected string $name ;
+protected string $state ;
 protected string $nourriture;
 protected float $quantitee;
-protected string $detail = 'null';
+protected string $detail ;
 protected string $date;
 protected string $date_de_passage;
 protected string $images;
@@ -20,44 +18,14 @@ protected string $images;
 
 
 
-public function getId(): int
-{
-      return $this->id;
-}
-
-public function setId(int $id)
-{
-     $this->id = $id;
-}
-
-public function getFirstName():string
-{
-      return $this->first_name;
-}
-
-public function setFirstName(string $first_name)
-{
-     $this->first_name = $first_name;
-}
-
-/*public function getRace(): string
-{
-      return $this->race;
-}
-
-public function setRace(string $race)
-{
-     $this->race = $race;
-}*/
-
 public function getHabitat() : string
 {
-return $this->home;
+return $this->name;
 }
 
 public function setHabitat($habitat)
 {
-$this->home = $habitat;
+$this->name = $habitat;
 
 return $this;
 }
@@ -71,20 +39,6 @@ return $this->state;
 public function setState($state)
 {
 $this->state = $state;
-
-return $this;
-}
-
-
-public function getNameRace(): string
-{
-return $this->namerace;
-}
-
-
-public function setNameRace($namerace)
-{
-$this->namerace = $namerace;
 
 return $this;
 }
@@ -159,7 +113,7 @@ $this->detail = $detail;
 return $this;
 }
 
- 
+
 public function getAnimal()
 {
 return $this->animal;

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,38 +42,28 @@
   </nav>
      
   
-     
- <section>
- <div class="dots" onclick="this.classList.toggle('active');">
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="shadow cut"></div>
-  <div class="container cut">
-    <div class="drop cut2"></div>
-  </div>
-  <div class="list">
-    <ul>
-      <li>
-      <a href="index.php" class="dropdown px-2">Accueil</a>
-      </li>
-      <li>
-      <a href="?controller=services&action=readvisiteur" class="dropdown px-2">Services</a>
-      </li>
-      <li>
-      <a href="?controller=habitats&action=readvisiteur" class="dropdown px-2">Habitats</a>
-      </li>
-      <li>
-      <a href="?controller=users&action=connect" class="dropdown px-2">Connexion</a>
-      </li>
-      <li>
-      <a href="?controller=contact&action=formcontact" class="dropdown px-2">Contact</a>
-      </li>
-    </ul>
-  </div>
-  <div class="dot"></div>
+  
+
+  
+  <input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><span></span></label>
+    <label for="active" class="close"></label>
+    <div class="wrapper">
+      <ul>
+      <li><a href="index.php">Accueil</a></li>
+<li><a href="?controller=services&action=readvisiteur">Services</a></li>
+<li><a href="?controller=habitats&action=readvisiteur">Habitats</a></li>
+<li><a href="?controller=contact&action=formcontact">Contact</a></li>
+
+</ul>
 </div>
-<div class="cursor"
-     onclick="document.querySelector('.dots').classList.toggle('active');"></div>
-    </header>
- </section>
+<div class="content">
+      
+</div>
+
+
+
+
+ 
+ </header>
   

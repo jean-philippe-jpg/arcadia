@@ -5,6 +5,7 @@ namespace App\Repository;
 
 use App\Entity\Animals;
 use App\Bdd\Mysql;
+use App\Entity\AbstractClass;
 use App\Entity\RapportSoignant;
 use App\Tools\StringTools;
 
@@ -17,7 +18,7 @@ use App\Tools\StringTools;
         $mysql = Mysql::getInstance();
         $pdo = $mysql->getPDO();
 
-        $query = $pdo->prepare('SELECT a.id as id, a.first_name as first_name, r.name as namerace, a_s.state as state, a_s.detail as detail, img.libele as images FROM animals a
+        $query = $pdo->prepare('SELECT a.id as id_animals, a.first_name as name_animals, r.name as race, a_s.state as state, a_s.detail as detail, img.libele as images FROM animals a
                 INNER JOIN race r ON a.race = r.id  JOIN animals_state a_s ON a.id = a_s.animal JOIN img_animals img ON img.animals_id = a.id where a.id = :id ');   
         $query->bindParam(':id', $id, $pdo::PARAM_INT);
         
@@ -35,7 +36,7 @@ use App\Tools\StringTools;
         $mysql = Mysql::getInstance();
         $pdo = $mysql->getPDO();
 
-        $query = $pdo->prepare('SELECT a.id as id, a.first_name as first_name/*, a.nourriture as nourriture*/, /*a.quantitee as quantitee, a.date_heure as date,*/ r.name as namerace, h.name as home, a_s.state as state FROM animals a
+        $query = $pdo->prepare('SELECT a.id as id_animals, a.first_name as name_animals, r.name as race, h.name as home, a_s.state as state FROM animals a
                 INNER JOIN race r ON a.race = r.id JOIN habitat h ON a.habitat = h.id JOIN animals_state a_s ON a.state = a_s.id where a.id = :id');   
         $query->bindParam(':id', $id, $pdo::PARAM_INT);
         
@@ -53,7 +54,7 @@ use App\Tools\StringTools;
         $mysql = Mysql::getInstance();
         $pdo = $mysql->getPDO();
 
-        $query = $pdo->prepare("SELECT  a.first_name as first_name, a.race as race, a.habitat as home, a.state as state, r.name as namerace, h.name as home, a_s.state as state FROM animals a
+        $query = $pdo->prepare("SELECT  a.first_name as name_animals, a.race as race, a.habitat as home, a.state as state, r.name as namerace, h.name as home, a_s.state as state FROM animals a
                 INNER JOIN race r ON a.race = r.id JOIN habitat h ON a.habitat = h.id JOIN animals_state a_s ON a.state = a_s.id where a.id = :id");
         $query->bindParam(':id', $id, $pdo::PARAM_INT);
         
@@ -184,7 +185,7 @@ use App\Tools\StringTools;
 
                 $mysql = Mysql::getInstance();
                 $pdo = $mysql->getPDO();
-                $stmt = $pdo->prepare("SELECT  group_concat(r.name, '<br>') as namerace, group_concat(h.name, '<br>') as home,  a.id, a.first_name FROM animals a
+                $stmt = $pdo->prepare("SELECT  group_concat(r.name, '<br>') as race, group_concat(h.name, '<br>') as name,  a.id as id_animals, a.first_name as name_animals FROM animals a
                 INNER JOIN race r ON a.race = r.id JOIN habitat h ON h.id = a.habitat_id group by a.id ");   
                
                 if($stmt->execute()){
@@ -214,8 +215,8 @@ use App\Tools\StringTools;
                     $mysql = Mysql::getInstance();
                     $pdo = $mysql->getPDO();
 
-                    $stmt = $pdo->prepare("SELECT a.id as id, a.first_name as first_name , h.name as home /*, r.name = namerace*/ , r_s.nourriture as nourriture, r_s.quantitee as quantitee , r_s.date_heure as date FROM animals a
-                    INNER  JOIN rapport_soignant r_s ON r_s.animal = a.id JOIN race r ON a.race = r.id  JOIN habitat h ON h.animals_list = a.id WHERE a.id = :id ");
+                    $stmt = $pdo->prepare("SELECT a.id as id_animals, a.first_name as name_animals , h.name as name /*, r.name = namerace*/ , r_s.nourriture as nourriture, r_s.quantitee as quantitee , r_s.date_heure as date FROM animals a
+                    INNER  JOIN rapport_soignant r_s ON r_s.animal = a.id JOIN race r ON a.race = r.id  JOIN habitat h ON a.habitat_id = h.id WHERE a.id = :id ");
                     $stmt->bindParam(':id', $id, $pdo::PARAM_INT);
                    
                     if($stmt->execute()){
@@ -244,7 +245,7 @@ use App\Tools\StringTools;
                 $mysql = Mysql::getInstance();
                 $pdo = $mysql->getPDO();
 
-                $query = $pdo->prepare('SELECT a.id as id,  a.first_name as first_name,  r.name as namerace, h.name as home FROM animals a
+                $query = $pdo->prepare('SELECT a.id as id_animals,  a.first_name as name_animals,  r.name as race, h.name as name FROM animals a
                 INNER JOIN race r ON a.race = r.id JOIN habitat h ON a.habitat_id = h.id where a.id = :id');   
                     $query->bindParam(':id', $id, $pdo::PARAM_INT);
         

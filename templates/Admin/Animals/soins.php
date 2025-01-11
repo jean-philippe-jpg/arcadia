@@ -15,8 +15,8 @@ require_once _ROOTPATH_.'/templates/Admin/Partial/_header.php' ?>
 <a href="index.php?controller=animals&action=read" class="btn btn-success">retour</a>
 <div class="show">
 
-<p><strong>Prenom:  </strong><?= $soin->getFirstName()?></p>
-<p><strong>Race:  </strong><?= $soin->getNameRace()?></p>
+<p><strong>Prenom:  </strong><?= $soin->getName_animals()?></p>
+<p><strong>Race:  </strong><?= $soin->getRace()?></p>
 <p><strong>Habitat:  </strong><?= $soin->getHabitat()?></p>
 
 
@@ -41,7 +41,7 @@ require_once _ROOTPATH_.'/templates/Admin/Partial/_header.php' ?>
 
     <div class="create">
     
-    <input style="visibility: hidden;" name="animal" value="<?= $soin->getId();?>"  id="animal" type="number">
+    <input style="visibility: hidden;" name="animal" value="<?= $soin->getId_animals();?>"  id="animal" type="number">
     </div>
 
     <input type="submit"  value="create">

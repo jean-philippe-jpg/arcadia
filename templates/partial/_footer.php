@@ -24,6 +24,7 @@
     </ul>
 
     <?php }?>
-    <script src="/assets/script.js"></script>
+    
+    <script src="/mongodb.js"></script>
 </body>
 </html>

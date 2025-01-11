@@ -3,6 +3,7 @@
 //use App\Repository\VetoRepository;
 namespace App\Controller;
 
+use App\Entity\Avishabitats;
 use App\Entity\Habitats;
 use App\Repository\VetoRepository;
 use App\Repository\AnimalsRepository;
@@ -35,7 +36,6 @@ class VetoController extends Controller{
                         break;
 
                         case 'readadmin':
-                            //$this->read();
                             $this->Admin();
                             break;
 
@@ -46,7 +46,13 @@ class VetoController extends Controller{
                     case 'habitats':
                         $this->readHabitats();
                         $this->createAvisHabitat();
+                        $this->readAvisHab();
                         break;
+
+                        //case 'avishabitats':
+                           // $this->readAvisHab();
+                            
+                            break;
                         case 'animals':
                             $this->readAnimals();
                             $this->createAvisAnimal();
@@ -165,34 +171,24 @@ class VetoController extends Controller{
 
 
                         }
-                    
-                        // charger l'id d'un element avec le repository//
-
-                        
-                            //require_once 'templates/showanimals.php';//    
+                     
                    
                 }
 
-               
-
-                /*protected function habitats()
+                protected function readAvisHab()
                 
                 {
-                        try {     
-
-                            
-                       if(isset($_GET['avis_habitat'])){
-                            //$habitat = $_GET['avis_habitat'];
-                        $habitatRrepository = new HabitatsRepository();
-                        $habitat = $habitatRrepository->read(/*$habitat);
- 
-                        $this->render('/Admin/Veto/Read', [
-                                'habitat' => $habitat
-                                      
-                            ] );
-
-                       }
- 
+                        try {       
+                                if(isset($_GET['avis'])){
+                                    //$id = $_GET['avis'];
+                                    $avisHabRrepository = new HabitatsRepository();
+                                    $avishab = $avisHabRrepository->readAvisHab();
+                                    $this->render('/Veto/AvisHabitats', [
+                                        'avishabitats' => $avishab
+                                        
+                                         ] );
+                                    }
+                               
                         } catch(\Exception $e ) {
                             $this->render('errors/errors', [
                                 'errors' => $e->getMessage()
@@ -200,27 +196,17 @@ class VetoController extends Controller{
                             ]);
 
 
-                        }
-                     
+                        }   
                    
-                }*/
+                }
 
-               
-
+                
                 protected function read()
                 
                 {
                         try {       
 
                             if(  !isset($_GET['animalslist']) && !isset($_GET['readsoins'])){
-                               
-                            /*$habitatRrepository = new HabitatsRepository();
-                            $habitat = $habitatRrepository->read();
-     
-                            $this->render('/Admin/Veto/Read', [
-                                    'read' => $habitat
-                                          
-                                ] );*/
 
                                 $vetoRrepository = new VetoRepository();
                                 $read = $vetoRrepository->readStateAnimal();
@@ -233,7 +219,7 @@ class VetoController extends Controller{
                             } elseif (isset($_GET['animalslist'])){
 
                                 $habitatRrepository = new AnimalsRepository();
-                            $habitat = $habitatRrepository->read(/*$habitat*/);
+                            $habitat = $habitatRrepository->read();
      
                             $this->render('/Veto/Read', [
                                     'animal' => $habitat
@@ -253,11 +239,8 @@ class VetoController extends Controller{
                                 ] );
 
 
-
                             }
                                
-                            
-                             
  
                         } catch(\Exception $e ) {
                             $this->render('errors/errors', [

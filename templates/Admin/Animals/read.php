@@ -46,17 +46,17 @@ require_once _ROOTPATH_.'/templates/Admin/Partial/_btnadmin.php';
       <?php foreach($animal as $reads) { ?>
         
       <tr>
-      <td><?= $reads->getId(); ?></td>
-      <td><?= $reads->getFirstname(); ?></td>
-      <td><?= $reads->getNameRace(); ?></td>
+      <td><?= $reads->getId_animals(); ?></td>
+      <td><?= $reads->getName_animals(); ?></td>
+      <td><?= $reads->getRace(); ?></td>
       <td><?= $reads->getHabitat(); ?></td>
          
           
-          <td><a href="?controller=animals&action=update&modify=<?= $reads->getId(); ?>" class="btn btn-warning">update</a></td>
-          <td><a href="?controller=animals&action=soins&id=<?= $reads->getId(); ?>" class="btn btn-warning">soins animal</a></td>
-          <td><a href="?controller=animals&action=show&id=<?= $reads->getId(); ?>" class="btn btn-warning">voir</a></td>
-          <td><a href="?controller=animals&action=create&photo&id=<?= $reads->getId(); ?>" class="btn btn-warning">photo</a></td>
-          <td><a href="?controller=animals&action=delete&suprimer=<?= $reads->getId(); ?>" class="btn btn-danger">delete</a></td>
+          <td><a href="?controller=animals&action=update&modify=<?= $reads->getId_animals(); ?>" class="btn btn-warning">update</a></td>
+          <td><a href="?controller=animals&action=soins&id=<?= $reads->getId_animals(); ?>" class="btn btn-warning">soins animal</a></td>
+          <td><a href="?controller=animals&action=show&id=<?= $reads->getId_animals(); ?>" class="btn btn-warning">voir</a></td>
+          <td><a href="?controller=animals&action=create&photo&id=<?= $reads->getId_animals(); ?>" class="btn btn-warning">photo</a></td>
+          <td><a href="?controller=animals&action=delete&suprimer=<?= $reads->getId_animals(); ?>" class="btn btn-danger">delete</a></td>
       </tr>
      
 

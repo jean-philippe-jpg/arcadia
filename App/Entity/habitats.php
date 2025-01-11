@@ -5,31 +5,27 @@ namespace App\Entity;
 
 
 
-class Habitats 
+class Habitats extends AbstractClass
 {
 
-protected int $id ;
+protected int $id_hab ;
 protected  string $description ;
 protected string $name ;
-protected int $animal_id ;
 protected array $animals_list = [] ;
 protected string $race_name ;
-protected string $race ;
 protected string $state ;
-protected string $name_animals ;
 protected int $avis_id ;
+protected string $avis_hab ;
+protected string $etat ;
 
 
 
-public function getId(): int
+public function getId_hab (): int
 {
-      return $this->id;
+      return $this->id_hab;
 }
 
-public function setId(int $id)
-{
-     $this->id = $id;
-}
+
 
 public function getName(): string
 {     $hab = ucwords($this->name);
@@ -65,35 +61,6 @@ public function setAnimalsList( $animals_list)
 
 
 
-
-public function getAnimal_id()
-{
-return $this->animal_id;
-}
-
-
-public function setAnimal_id($animal_id)
-{
-$this->animal_id = $animal_id;
-
-return $this;
-}
-
- 
-public function getRace(): string
-{
-return $this->race;
-}
-
-
-public function setRace($race)
-{
-$this->race = $race;
-
-return $this;
-}
-
- 
 public function getState()
 {
 return $this->state;
@@ -122,18 +89,30 @@ return $this;
 }
 
 
-public function getName_animals()
+public function getAvis_hab()
 {
-return $this->name_animals;
+return $this->avis_hab;
 }
 
 
-public function setName_animals($name_animals)
+public function setAvis_hab($avis_hab)
 {
-$this->name_animals = $name_animals;
+$this->avis_hab = $avis_hab;
 
 return $this;
 }
 
  
+public function getEtat()
+{
+return $this->etat;
+}
+
+
+public function setEtat($etat)
+{
+$this->etat = $etat;
+
+return $this;
+}
 }

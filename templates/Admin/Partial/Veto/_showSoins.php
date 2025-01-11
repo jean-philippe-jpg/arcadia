@@ -5,7 +5,7 @@
     <ul>
     
     <?php foreach($animal as $animals){ ?>
-    <li><a href="?controller=veto&action=read&readsoins=<?= $animals->getId() ?>"><?= $animals->getFirstName();?></a></li>
+    <li><a href="?controller=veto&action=read&readsoins=<?= $animals->getId_animals() ?>"><?= $animals->getName_animals();?></a></li>
     <?php } ?>
     
     </ul>

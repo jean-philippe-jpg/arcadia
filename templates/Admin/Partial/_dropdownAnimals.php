@@ -9,7 +9,7 @@
    <ul>
 
      <?php foreach($animals as $animal){?>
-     <li><a href="?controller=rapportsoignant&action=soins&id=<?= $animal->getId() ?>"><?= $animal->getFirstName();?></a></li>
+     <li><a href="?controller=rapportsoignant&action=soins&id=<?= $animal->getId_animals() ?>"><?= $animal->getName_animals();?></a></li>
      <?php } ?>
    </ul>
 </nav>
@@ -19,9 +19,9 @@
 
 <div class="show">
 
-<p><strong>Prenom:  </strong><?= $animals->getFirstName()?></p>
-<p><strong>Race:  </strong><?= $animals->getNameRace()?></p>
-<p><strong>Habitat:  </strong><?= $animals->getHabitat()?></p>
+<p><strong>Prenom:  </strong><?= $animals->getName_animals()?></p>
+<p><strong>Race:  </strong><?= $animals->getRace()?></p>
+<p><strong>Habitat:  </strong><?= $animals->getName()?></p>
 <p><strong>Etat:  </strong><?= $animals->getState()?></p>
 <?php foreach($details as $detail) { ?>
 <p><strong>Nourriture:  </strong><?= $detail->getNourriture()?></p>

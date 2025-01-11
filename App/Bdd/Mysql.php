@@ -13,6 +13,7 @@ class Mysql
 
     private function __construct( )
     {
+        
        $config = require_once _ROOTPATH_ .'/config.php';
 
         if(isset($config['db_name'])){

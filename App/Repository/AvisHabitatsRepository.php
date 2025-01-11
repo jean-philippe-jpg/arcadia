@@ -66,13 +66,14 @@ class AvisHabitatsRepository {
         
         }
 
-    public function readRace(){
+    public function read(){
 
         try{
 
                 $mysql = Mysql::getInstance();
                 $pdo = $mysql->getPDO();
-                $stmt = $pdo->prepare("SELECT * FROM race ");
+                $stmt = $pdo->prepare("SELECT * FROM avis_habitat
+                INNER JOIN habitat ON habitat.id = avis_habitat.habitat_id");
                 
                 if($stmt->execute()){
                     

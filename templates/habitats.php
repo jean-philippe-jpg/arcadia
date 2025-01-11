@@ -1,6 +1,6 @@
 <?php
 //require_once './bdd/connexion.php';
-require_once './templates/partial/_header.php';
+require_once './templates/partial/_header-hab.php';
 ?>
 <h3>Affichage des habitats</h3>
 

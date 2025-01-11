@@ -42,12 +42,12 @@ if(!isset($_GET['photo'])) { ?>
 
     
     <div class="show">
-        <h4>photo formulaire</h4>
-
+        <h4>photo formulaire </h4>
+       
         
         <form action="" method="post" enctype="multipart/form-data">
 
-        <input  type="text" name="animals_id" id="animals_id" value="<?= $animals_id->getFirst_name(); ?>">
+        <input  type="text" name="animals_id" id="animals_id" >
         <input type="file" name="images" id="images">
         <input type="submit" name="insert" value="create">
 

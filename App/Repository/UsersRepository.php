@@ -76,7 +76,7 @@ class UsersRepository {
             if ($statement->execute()) {
                 
                 var_dump( $email);
-                var_dump($encrypted_text);
+                //var_dump($encrypted_text);
                 echo 'L\'utilisateur a bien été créé';
 
               
@@ -220,14 +220,16 @@ public function profil( ){
                 $email = $_POST['email'];
                 $sanitized_email = htmlspecialchars($email, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
-                $encryption_key="Toto-Key12";
-                $encrypted_text = openssl_encrypt($email, 'aes-256-cbc', $encryption_key);
-                $decrypted_text = openssl_decrypt(  $encrypted_text, 'aes-256-cbc', $encryption_key);
-                $statement->bindValue(':email', $decrypted_text, $pdo::PARAM_STR);
+                $encryption_key="Toto-Key123";
+                //$encryption2_key="Toto-Key123";
+                
+                $encrypted_text = openssl_encrypt( $sanitized_email, 'aes-256-cbc', $encryption_key);
+                //$decrypted_text = openssl_decrypt(  $encrypted_text, 'aes-256-cbc', $encryption2_key);
+                $statement->bindValue(':email', $encrypted_text, $pdo::PARAM_STR);
                 $statement->execute();
                 
-                var_dump( $decrypted_text);
-                var_dump( $sanitized_email);
+                //var_dump($encrypted_text);
+                //var_dump( $sanitized_email);
                 
                 $user = $statement->fetchObject( Users::class);
                 
@@ -267,6 +269,7 @@ public function profil( ){
                         //var_dump($user->getRoles()); echo '<br><br>';
 
                           $_SESSION['roles'] = $user->getRoles();
+                         
                           
                        
                 } else {
@@ -297,9 +300,10 @@ public function profil( ){
                     //$statement = $pdo->prepare('SELECT u.id as id, u.email as email, r.role_id as name FROM users u
                     //INNER JOIN roles_users r ON r. = u.id');
                     
-                    $statement = $pdo->prepare("SELECT u.id as id, u.email as email, group_concat(r.name, '<br>') as rolesname FROM roles_users 
-                  INNER JOIN roles r ON role_id = r.id JOIN users u ON user_id = u.id group by u.id");    
-                   
+                    //$statement = $pdo->prepare("SELECT u.id as id, u.email as email, group_concat(r.name, '<br>') as rolesname FROM roles_users 
+                  //INNER JOIN roles r ON role_id = r.id JOIN users u ON roles_users.user_id = u.id group by u.id");    
+                   $statement = $pdo->prepare("SELECT u.id as id, u.email as email, group_concat(r.name, '<br>') as rolesname FROM roles_users 
+                  INNER JOIN roles r ON roles_users.role_id = r.id JOIN users u ON roles_users.user_id = u.id group by u.id");    
                         if ( $statement->execute()) {
 
                            
@@ -309,7 +313,7 @@ public function profil( ){
                             return $statement->fetchAll();
                             
                             
-                              echo 'utilisateurs affichés';
+                             
                             
                         } else {
                                echo 'erreur d\'affichege des utilisateurs';

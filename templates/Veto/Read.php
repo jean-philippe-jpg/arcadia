@@ -41,12 +41,12 @@ require_once _ROOTPATH_.'/templates/Admin/Partial/_buttonVeto.php';
       <?php foreach($read as $reads) { ?>
       <tr>
         
-         <td><?= $reads->getId_state(); ?></td>
+          <td><?= $reads->getId_state(); ?></td>
           <td><?= $reads->getNourriture();?></td>
           <td><?= $reads->getQuantitee(); ?></td>
           <td><?= $reads->getState();?></td>
           <td><?= $reads->getDetail();?></td>
-          <td><?= $reads->getAnimals_name();?></td>
+          <td><?= $reads->getName_animals();?></td>
           <td><?= $reads->getDate();?></td>
           
       
@@ -55,7 +55,7 @@ require_once _ROOTPATH_.'/templates/Admin/Partial/_buttonVeto.php';
           <td><a href="?controller=veto&action=update&modify=<?= $reads->getId_state(); ?>" class="btn btn-warning">update</a></td>
           <td><a href="?controller=veto&action=show&id=<?= $reads->getId_state(); ?>" class="btn btn-warning">voir</a></td>
           
-          <td><a href="?controller=veto&action=delete&suprimer=<?= $reads->getId(); ?>" class="btn btn-danger">delete</a></td>
+          <td><a href="?controller=veto&action=delete&suprimer=<?= $reads->getId_state(); ?>" class="btn btn-danger">delete</a></td>
       </tr>
       
         <?php } ?>  

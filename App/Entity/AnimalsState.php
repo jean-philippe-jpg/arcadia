@@ -2,35 +2,24 @@
 
 namespace App\Entity;
 
-class AnimalsState {
+ class AnimalsState extends AbstractClass
+ {
 
     
-      protected int $id ;
       protected int $id_state ;
+     
       protected string $animals_id ;
-      protected string $animals_name ;
       protected string $nourriture ;
-      protected  int $quantitee ;
+      protected  int   $quantitee ;
       protected string $state;
       protected string $detail;
-      protected int $animal;
-      protected string $first_name;
       protected string $date;
       protected string $date_de_passage;
       protected string $race;
      
 
-public function getId(): int
-{
-      return $this->id;
-}
-
-public function setId(int $id)
-{
-     $this->id = $id;
-}
-
-
+    
+      
      
       public function getNourriture():string
       {
@@ -87,21 +76,7 @@ public function setId(int $id)
             return $this;
       }
 
-     
-      public function getAnimal():int
-      {
-            return $this->animal;
-      }
 
-     
-      public function setAnimal($animal)
-      {
-            $this->animal = $animal;
-
-            return $this;
-      }
-
-     
       public function getDate():string
       {
             return $this->date;
@@ -115,19 +90,7 @@ public function setId(int $id)
       }
 
       
-      public function getFirst_name(): string
-      {
-            return $this->first_name;
-      }
-
-      
-      public function setFirst_name($first_name)
-      {
-            $this->first_name = $first_name;
-
-            return $this;
-      }
-
+     
        
       public function getRace()
       {
@@ -170,18 +133,7 @@ public function setId(int $id)
       }
 
        
-      public function getAnimals_name()
-      {
-            return $this->animals_name;
-      }
-
-      
-      public function setAnimals_name($animals_name)
-      {
-            $this->animals_name = $animals_name;
-
-            return $this;
-      }
+     
 
       
       public function getAnimals_id()
@@ -196,4 +148,7 @@ public function setId(int $id)
 
             return $this;
       }
+
+       
+    
 }

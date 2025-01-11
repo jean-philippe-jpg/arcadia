@@ -1,5 +1,7 @@
 {
     "require": {
-        "mongodb/mongodb": "^1.20"
+        "mongodb/mongodb": "^1.20",
+        "doctrine/cache": "^2.2",
+        "doctrine/mongodb-odm": "^2.9"
     }
 }

@@ -24,7 +24,6 @@ try {
     switch($_GET['controller']){
 
         case 'admin':
-
             $pagecontroller = new VetoController();
             $pagecontroller->route();
             break;
@@ -68,6 +67,7 @@ try {
                             $veto = new VetoController;
                             $veto->route();
                             break;
+                            
                         case 'contact':
 
                             $pagecontroller = new ContactController();

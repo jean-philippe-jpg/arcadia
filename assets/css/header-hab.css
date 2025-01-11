@@ -1,49 +1,72 @@
 header{
+  display: flex;
+    background-image: url('/uploads/hipopotame.jpg');
+    background-size: calc(100%) calc(100% );
+    object-fit: cover;
+    background-position: center;
+    height: 80vh;
+    
+  }
+
+
+  .hippo-radius {
+
+    background-image: url('/uploads/hipopotame.jpg');
+    background-size: calc(100%) calc(100% );
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    margin-left: 5vh;
+    margin-top: 30vh;
+    position: absolute;
+  }
+  .msg-header {
+
+ 
+    color: aliceblue;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    margin-right: 14vw;
+    margin-top: 30vh;
+    font-size: 2.2em;
+    
+   }
+ 
+
+  .title_zoo {
+
+    font-style: italic;
+    font-weight: bold;
+    font-size: 2em;
+    text-decoration: none;
+    color: #EDB20F;
+    margin-left: 50px;
+    margin-top: 2vh;
+    height: 25px;
+  
+  }
+
+
+  nav {
+  margin: auto;
+    margin-top: 2vh;
+    color: white;
+    
+  }
+ 
+
+  
+  nav ul  {
     display: flex;
-      background-image: url('/templates/uploads/vue\ generale.jpg');
-      background-size: calc(100%) calc(100% );
-      object-fit: cover;
-      background-position: center;
-      height: 55vh;
-     
-    }
-  
-    .img_header {
-      background-image: url('/templates/uploads/hipopotame.webp');
-      background-size: calc(100%) calc(100% );
-      object-fit: cover;
-      background-position: center;
-      
-    }
-  
-    .title_zoo {
-      font-size: 2em;
-      text-decoration: none;
-      color: #D9E327;
-      margin-left: 50px;
-      margin-top: 2vh;
-      height: 25px;
+    font-size: 1.5em;
     
-    }
-  
-    nav {
-    margin: auto;
-      margin-top: 2vh;
-      color: white;
-      
-    }
-   
-  
+    list-style-type: none;
     
-    nav ul  {
-      display: flex;
-      font-size: 1.5em;
-     
-      list-style-type: none;
-      
-    }
-  
-      
-  
+  }
+
+  .link-item {
+    color: #EDB20F;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 15px;
     
-     
+  }

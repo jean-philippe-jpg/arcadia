@@ -1,6 +1,6 @@
 <?php
-
-//require 'vendor/autoload.php';
+phpinfo();
+require_once __DIR__ . '/vendor/autoload.php';
 
 use MongoDB\Client;
 
@@ -15,3 +15,4 @@ $cursor = $collection->find();
 foreach ($cursor as $document) {
     var_dump($document);
 }
+

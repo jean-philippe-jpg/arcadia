@@ -1,5 +1,5 @@
 
-const { State } = require("../model/state");
+const  {State}  = require("../model/state");
 //const State = require("../model/state");
 const client = require("../bdd/connect");
 //const Status = require("../model/status");
@@ -9,10 +9,11 @@ const ajouterState = async (req, res) => {
     try {
         let state = new State(
             req.body.name,
-             req.body.vue);
+             req.body.vue
+            );
 
        let result = await client.bd()
-       .collection("state")
+       .collection("statiqtique")
        .insertOne(state);
 
         res.status(200).json(result);
@@ -24,3 +25,5 @@ const ajouterState = async (req, res) => {
     }
 }
 
+  
+module.exports = { ajouterState };

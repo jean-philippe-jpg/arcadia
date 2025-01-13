@@ -1,13 +1,13 @@
 const express = require("express");
 const { connect } = require("./bdd/connect");
 const routeState = require("./route/state");
-//const router = require("./route/state");
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/api/v1/state", routeState);
-
+app.use("/api/v1", routeState);
+console.log("Server started on port 3305");
  connect("mongodb://127.0.0.1:27017/", (erreur) => {
 
     if (erreur) {
@@ -15,12 +15,12 @@ app.use("/api/v1/state", routeState);
        process.exit(-1);
     } else {
         console.log("Connexion à la base de données réussie !");
-        app.listen(33006);
+        app.listen(3307);
     console.log("Server started on port tu est sur la bonne voie");
     }
     });
 
-app.listen(33006);
+
    
 
 

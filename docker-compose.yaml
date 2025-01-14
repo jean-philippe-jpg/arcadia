@@ -1,5 +1,12 @@
 version: '4.32.0'
 services:
+
+  node21:
+      build: .
+      command: npm run start
+      ports:
+       - 3300:3000
+        
   php:
     image: php:8.2-apache 
     container_name: php8.2
@@ -10,19 +17,24 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      - db
+        
   db:
     image: mysql:8.0
     container_name: mysql8.0
     command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: J25061984c%
+      MYSQL_ROOT_PASSWORD:  J25061984c%
       MYSQL_DATABASE: arcadia
       MYSQL_USER: jeAn-phI
       MYSQL_PASSWORD: J25061984c%#
     ports:
-      - 3305:3000
+      - 3305:3306
       
+ 
       
+
   mongodb:
     image: mongo:7.0.8
     restart: always
@@ -31,4 +43,4 @@ services:
     environment:  
       MONGO_INITDB_ROOT_USERNAME: jean-phi
       MONGO_INITDB_ROOT_PASSWORD: J25061984c
-
+ 

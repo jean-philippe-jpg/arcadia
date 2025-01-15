@@ -1,13 +1,21 @@
 version: '4.32.0'
 services:
 
-  node21:
-      build: .
-      command: npm run start
+   db:
+      image: mysql:8.0
+      container_name: my-sql8.0
+      command: --default-authentication-plugin=mysql_native_password
+      environment:
+        MYSQL_ROOT_PASSWORD:  J25061984C
+        MYSQL_DATABASE: arcadia
+        MYSQL_USER: jeAn-phI
+        MYSQL_PASSWORD: J25061984c%#
       ports:
-       - 3300:3000
-        
-  php:
+       - 3305:3306   
+      volumes:
+          - ./mysql:/var/lib/mysql
+ 
+   php:
     image: php:8.2-apache 
     container_name: php8.2
     ports:
@@ -17,25 +25,23 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    depends_on:
-      - db
-        
-  db:
-    image: mysql:8.0
-    container_name: mysql8.0
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_ROOT_PASSWORD:  J25061984c%
-      MYSQL_DATABASE: arcadia
-      MYSQL_USER: jeAn-phI
-      MYSQL_PASSWORD: J25061984c%#
-    ports:
-      - 3305:3306
-      
- 
+    #depends_on:
+      #- bd
+
+   nginx:
+       image: nginx:latest
+       volumes:
+         - ./nginx.conf:/etc/nginx/ngnix.conf
+       ports:
+          - 8080:80
+          
+   node:
+      build: ./mongojs
+      volumes:
+        - ./mongojs:/www
       
 
-  mongodb:
+   mongodb:
     image: mongo:7.0.8
     restart: always
     ports:
@@ -44,3 +50,6 @@ services:
       MONGO_INITDB_ROOT_USERNAME: jean-phi
       MONGO_INITDB_ROOT_PASSWORD: J25061984c
  
+      volumes:
+         mysql
+          php

@@ -1,14 +1,5 @@
-# image officièle definissant la base de construction de l'image de l'application
-FROM node:21
-# répertoire de travail du conteneur, dans lequel les commandes suivantes seront exécutées
-WORKDIR  /usr/src/app
-# les fichiers package du projet, sont copier dans le repertoire de travail du conteneur
-COPY ./app/package*.json ./
+FROM node:18.20.5-alpine as build
 
-RUN npm install 
-# le reste des fichiers de mon projet nodejs dans le conteneur
-COPY ./app .
-
-# port d'écoute de l'application
-EXPOSE 3000
-# HOST 0.0.0.0 permet l'acces depuis l'exterrieur du conteneur
+WORKDIR /www
+EXPOSE 21017
+CMD ["node", "app.js"]

@@ -2,9 +2,8 @@
 
 namespace App\Repository;
 
-use App\Bdd\Mysql;
 use App\Entity\Horaires;
-
+use App\Bdd\Mysql;
 use App\Tools\StringTools;
 
 
@@ -36,10 +35,10 @@ class HorairesRepository {
                   
                 
     
-                $stmt = $pdo->prepare('INSERT INTO horaires (horaires, date, close) VALUES (:horaires, :date, :close)');
+                $stmt = $pdo->prepare('INSERT INTO horaires (date, horaires, close) VALUES (:date, :horaires, :close)');
                 $stmt->bindParam(':date', $sanitized_date, $pdo::PARAM_STR);
-                $stmt->bindParam(':horaires', $sanitized_ouverture, $pdo::PARAM_STR);
-                $stmt->bindParam(':close', $sanitized_fermeture, $pdo::PARAM_STR);
+                $stmt->bindParam(':horaires', $sanitized_horaires, $pdo::PARAM_STR);
+                $stmt->bindParam(':close', $sanitized_close, $pdo::PARAM_STR);
 
                     if(!isset($_POST['date'])) {
 
@@ -47,10 +46,10 @@ class HorairesRepository {
                     } else {
                 $date = $_POST['date'];
                 $sanitized_date = htmlspecialchars($date, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-                $ouverture = $_POST['ouverture'];
-                $sanitized_ouverture = htmlspecialchars($ouverture, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-                $fermeture = $_POST['fermeture'];
-                $sanitized_fermeture = htmlspecialchars($fermeture, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $horaires = $_POST['horaires'];
+                $sanitized_horaires = htmlspecialchars($horaires, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $close = $_POST['close'];
+                $sanitized_close = htmlspecialchars($close, ENT_QUOTES | ENT_HTML5, 'UTF-8');
              
                 if(!$stmt->execute()){
                     echo 'erreur d\'insertion';
@@ -76,6 +75,7 @@ class HorairesRepository {
                     
                     $stmt->setFetchMode($pdo::FETCH_CLASS, Horaires::class);
                     
+
                    return $stmt->fetchAll();
                   
                 } else {
@@ -92,40 +92,29 @@ class HorairesRepository {
         }
 
 
-    public function update(int $id){
+    public function updateRace(int $id){
 
         try{
 
             $mysql = Mysql::getInstance();
             $pdo = $mysql->getPDO();
-if (!isset($_POST['ouverture']) && !isset($_POST['fermeture'])) {
-
-} else {
-            $ouverture = $_POST['ouverture'];
-           $fermeture = $_POST['fermeture'];
-            
+               
          
-            $query = $pdo->prepare('UPDATE horaires set horaires = :horaires, close = :close WHERE id = :id');
+            $query = $pdo->prepare('UPDATE race set name = :name WHERE id = :id');
             $query->bindParam(':id', $id, $pdo::PARAM_INT);
-            $query->bindParam(':horaires',$ouverture , $pdo::PARAM_STR);
-                $query->bindParam(':close', $fermeture , $pdo::PARAM_STR);
-                
-
-            
+            $query->bindParam(':name', $_POST['name'], $pdo::PARAM_STR);
            
-           
-
-            
+            //$query->bindParam(':name', $name, $pdo::PARAM_STR);
+            //$query->bindParam(':description', $description, $pdo::PARAM_STR);
             $query->fetch($pdo::FETCH_ASSOC);
             $query->execute();
             
-            
             return  $query;
-            
-}
+         
+           
 
         } catch(\Exception $e){
-            echo 'erreur de modification'. $e->getMessage();
+            echo 'erreur d\'insertion'. $e->getMessage();
            
 
         }

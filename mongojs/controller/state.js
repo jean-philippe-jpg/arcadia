@@ -6,6 +6,8 @@ const client = require("../bdd/connect");
 
 
 const ajouterState = async (req, res) => {
+
+    res.send("tu est sur la bonne voie");
     try {
         let state = new State(
             req.body.name,
@@ -13,8 +15,8 @@ const ajouterState = async (req, res) => {
             );
 
        let result = await client.bd()
-       .collection("statiqtique")
-       .insertOne(state);
+       .collection("statistique")
+       .insertOne(ajouterState);
 
         res.status(200).json(result);
         
